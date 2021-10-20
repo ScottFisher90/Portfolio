@@ -1,0 +1,67 @@
+/*
+Examine columns for startups table
+*/
+SELECT *
+FROM startups
+LIMIT 5;
+
+/*
+Find the total number of companies in the table
+*/
+SELECT COUNT(*) AS 'total companies'
+FROM startups;
+
+/*
+Query to find the total value of the companies in the startups table
+*/
+SELECT SUM(valuation) AS 'total value'
+FROM startups;
+
+/*
+Company that has raised the most money
+*/
+SELECT name, MAX(raised) AS 'most raised'
+FROM startups;
+
+/*
+Company that raised the most money during the 'seed' stage
+*/
+SELECT name, MAX(raised) AS 'most raised during seed'
+FROM startups
+WHERE stage = 'Seed';
+
+/*
+Oldest company, and year founded
+*/
+SELECT name, MIN(founded) AS 'year founded'
+FROM startups;
+
+/*
+Average valuation of companies
+*/
+SELECT AVG(valuation) AS 'average value'
+FROM startups;
+
+/*
+Average valuation per each category, rounded, from highest to lowest 
+*/
+SELECT category, ROUND(AVG(valuation), 2) AS 'average value'
+FROM startups
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*
+Counts the number of companies in each industry (category)
+*/
+SELECT category, COUNT(*) AS 'number of companies'
+FROM startups
+GROUP BY 1
+ORDER BY 2 DESC;
+
+/*
+Finds the average company employment size for each location, where the average is over 500 employees
+*/
+SELECT location, AVG(employees) AS average
+FROM startups
+GROUP BY location
+HAVING average > 500;
