@@ -5,3 +5,4 @@
 # Low and high gdp life expectancy quartiles found (respectively):
 # 56.3375  64.34375 71.7375 
 # 72.965625 75.15625  80.521875
+# Final histogram attatched
